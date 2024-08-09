@@ -72,7 +72,14 @@ public class frmMenú extends javax.swing.JFrame {
         jLabel4.setText("Ingredientes:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
+        btnGuardar.setBackground(new java.awt.Color(255, 204, 153));
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(255, 0, 51));
@@ -133,6 +140,10 @@ public class frmMenú extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
