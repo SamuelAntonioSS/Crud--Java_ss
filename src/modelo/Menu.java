@@ -1,6 +1,8 @@
 package modelo;
 import java.sql.*;
 import java.util.UUID;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Menu {
     
@@ -67,6 +69,32 @@ public class Menu {
             System.out.println("este es el error en el modelo:metodo guardar " + ex);
         }
     }
+        
+            public void Mostrar(JTable tabla) {
+        //Creamos una variable de la clase de conexion
+        Connection conexion = ClaseConexion.getConexion();
+        //Definimos el modelo de la tabla
+        DefaultTableModel modeloTacos = new DefaultTableModel();
+        modeloTacos.setColumnIdentifiers(new Object[]{"UUID_menu", "Nombre", "Precio", "Ingredientes"});
+        try {
+            //Creamos un Statement
+            Statement statement = conexion.createStatement();
+            //Ejecutamos el Statement con la consulta y lo asignamos a una variable de tipo ResultSet
+            ResultSet rs = statement.executeQuery("SELECT * FROM tbMenu");
+            //Recorremos el ResultSet
+            while (rs.next()) {
+                //Llenamos el modelo por cada vez que recorremos el resultSet
+                modeloTacos.addRow(new Object[]{rs.getString("UUID_menu"), 
+                    rs.getString("nombre"), 
+                    rs.getInt("precio"), 
+                    rs.getString("ingredientes")});
+            }
+            //Asignamos el nuevo modelo lleno a la tabla
+            tabla.setModel(modeloTacos);
+        } catch (Exception e) {
+            System.out.println("Este es el error en el modelo, metodo mostrar " + e);
+        }
+
     
-    
+            }
 }

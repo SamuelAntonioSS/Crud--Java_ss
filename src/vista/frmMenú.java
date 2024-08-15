@@ -4,11 +4,17 @@
  */
 package vista;
 
+import controlador.ctrlMenu;
+import javax.swing.JTable;
+import modelo.Menu;
+
 /**
  *
  * @author Estudiante
  */
 public class frmMenú extends javax.swing.JFrame {
+
+    public JTable jtMenu;
 
     /**
      * Creates new form frmMenú
@@ -17,6 +23,15 @@ public class frmMenú extends javax.swing.JFrame {
         initComponents();
     }
 
+    public static void initFrmMenú(){
+    Menu modelo = new Menu();
+    frmMenú vista = new frmMenú();
+    ctrlMenu controlador = new ctrlMenu(modelo, vista);
+    
+    vista.setVisible(true);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,13 +97,18 @@ public class frmMenú extends javax.swing.JFrame {
         });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
-        btnEliminar.setBackground(new java.awt.Color(255, 0, 51));
+        btnEliminar.setBackground(new java.awt.Color(255, 204, 153));
+        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setText("Eliminar");
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
+        btnActualizar.setBackground(new java.awt.Color(255, 204, 153));
+        btnActualizar.setForeground(new java.awt.Color(0, 0, 0));
         btnActualizar.setText("Actualizar");
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
 
+        btnLimpiar.setBackground(new java.awt.Color(255, 204, 153));
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setText("Limpiar");
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
 
@@ -175,7 +195,7 @@ public class frmMenú extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMenú().setVisible(true);
+              initFrmMenú();
             }
         });
     }
