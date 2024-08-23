@@ -24,8 +24,13 @@ public class ctrlMenu implements MouseListener, KeyListener {
         
         //siempre poner todos los botones que vamos ocupar
         vistaQuepido.btnGuardar.addMouseListener(this);
+        vistaQuepido.jtbMenu.addMouseListener(this);
+        vistaQuepido.btnEliminar.addMouseListener(this);
+        vistaQuepido.btnActualizar.addMouseListener(this);
         
-        modeloMenu.Mostrar(vistaQuepido.jtMenu);
+        
+        modeloMenu.Mostrar(vistaMenu.jtbMenu);
+        
     }
     
     
@@ -35,6 +40,7 @@ public class ctrlMenu implements MouseListener, KeyListener {
     public void mouseClicked(MouseEvent e) {
         
                if(e.getSource() == vistaMenu.btnGuardar)
+               {
             
         modeloMenu.setNombre(vistaMenu.txtNombre.getText());
         modeloMenu.setPrecio(Double.parseDouble(vistaMenu.txtPrecio.getText()));
@@ -44,6 +50,32 @@ public class ctrlMenu implements MouseListener, KeyListener {
         modeloMenu.Mostrar(vistaMenu.jtMenu);
         
     }
+               if(e.getSource() == vistaMenu.btnEliminar)
+               {
+      System.out.println("se dio click a eliminar");
+      modeloMenu.Eliminar(vistaMenu.jtbMenu);
+      modeloMenu.Mostrar(vistaMenu.jtbMenu);
+        
+        
+               }
+               
+               if(e.getSource() == vistaMenu.jtbMenu)
+               {
+                   modeloMenu.cargarDatosTabla(vistaMenu);
+               }
+               
+               if(e.getSource() == vistaMenu.btnActualizar){
+                   modeloMenu.setNombre(vistaMenu.txtNombre.getText());
+                   modeloMenu.setPrecio(Double.parseDouble(vistaMenu.txtPrecio.getText()));
+                   modeloMenu.setIngredientes(vistaMenu.txtIngredientes.getText());
+                   
+                   modeloMenu.Actualizar(vistaMenu.jtbMenu);
+                   modeloMenu.Mostrar(vistaMenu.jtbMenu);
+               }
+
+
+    
+}
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -72,5 +104,4 @@ public class ctrlMenu implements MouseListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    
 }
